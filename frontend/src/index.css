@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* input[type = "text"],input[type="password"],input[type="email"]{
+  @apply w-full border my-2 py-2 px-3 rounded-2xl;
+} */
+@layer utilities {
+  .bg-primary {
+    background-color: #5B9A8B;
+  }
+}
+
+/* navBar */
+
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+
+
+}
+
+.navContainer {
+  background-color: #252B48;
+  height: 65px;
+  padding: 0 30px;
+
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+.container_A{
+  margin-top: 80px;
+  text-align: left;
+}
+
+.heading {
+  font-size:  5rem;
+  font-weight: 700;
+}
+
+.greeting {
+  font-size: 3rem;
+  opacity: .6;
+  font-weight: 600;
+  margin-top: 100px;
+  margin-left: 30px;
+}
+
+.greet-name {
+  font-size: 4.5rem;
+  font-weight: 700;
+  opacity: .9;
+  margin: 0 30px;
+}
+
+.btn {
+  height:45px;
+  border: 2px solid #7cdcff;
+  width: auto;
+  /* background-color: #7cdcff; */
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.btn-a{
+  /* padding:; */
+  margin: 20px 30px;
+}
+
+.btn-b{
+  /* padding:; */
+  width: 150px;
+  margin: 20px 30px;
+}
+
+.btn-nav {
+  height: 40px;
+  color: white;
+  width: 100px;
+  margin: 10px;
+  padding: 5px;
+}
+
+
+.container_B{
+  margin-top: 100px;
+  height: 400px;
+  display: flex;
+  flex-direction:  column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.container-b-2 {
+  /* position: absolute; */
+  margin-top: 50px;
+  height: 325px;
+  overflow-y: scroll;
+  scroll-behavior :smooth;
+  scrollbar-width: none;
+}
+
+.blog-display ::-webkit-scrollbar {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+form input {
+  height: auto!important;
+  width: 350px;
+  padding: 10px;
+  padding-left: 15px;
+  margin: 10px;
+  border: .5px solid gray;
+  border-radius: 20px;
+}
+form button {
+  margin: 10px;
+  padding: 10px;
+  height: 50px;
+  width: 150px;
+  border: none;
+  font-size: 20px;
+  background-color: rgb(19, 174, 217);
+  border-radius: 20px;
+}
+
+.span-blog {
+  font-size: 18px;
+  line-height:.7;
+  opacity: .7;
+}
+
+.span-blog :hover{
+  opacity: 1;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: opacity 1s;
+}
+
+.blog-container{
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow-y: scroll;
+
+}
+
+.blog-container  img {
+  max-height: 470px ;
+  width: auto;
+
+}
+
+.hiddenContainer {
+  margin-top: 50px;
+  justify-content: center;
+}
+
+.hiddenContainer  p {
+  text-align: left;
+  width: 80%;
+  font-size: 1.2rem;
+  opacity: .8;
+  margin:0  20px;
+  /* font-weight: 600; */
+}
+
+.blog-content-container{
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 100px;
+}
+
+.blog-author-container{
+  display: flex;
+  font-display: row;
+  /* justify-content: space-between;   */
+  justify-content: flex-end;
+
+  /* margin: 50px 100px; */
+}
+.blog-author-container p {
+  font-size: 1rem;
+  justify-content: flex-end;
+}
+
+.blog-title{
+  font-size: 4rem;
+  font-weight: 700;
+  opacity: .7;
+  margin: 20px 0;
+}
+
+textarea {
+  /* height: auto!; */
+  width: 350px;
+  padding: 10px;
+  padding-left: 15px;
+  margin: 10px;
+  border: .5px solid gray;
+  border-radius: 20px;
+  resize: none;
+}
+
+/* .navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} */
+
+.profile-container .profile-photo {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-container .profile-photo img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-container .profile-menu {
+  position: absolute;
+  top: 80px;
+  right:30px;
+  padding: 10px 15px;
+  background: #74e7ce;
+  /* width: px; */
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: 0.5s;
+}
+
+.profile-container .profile-menu h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 15px 0;
+  font-weight: 500;
+  font-size: 18px;
+  color: #555;
+  line-height: 1.2rem;
+}
+
+.profile-container .profile-menu ul li {
+  list-style: none;
+  padding: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  direction: flex;
+  align-items: center;
+}
+
+.profile-container .profile-menu ul li img {
+  max-width: 20px;
+  margin-right: 18px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.profile-container .profile-menu ul li:hover img{
+  display: inline-block;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: 0.5s;
+}
