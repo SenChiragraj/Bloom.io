@@ -70,7 +70,7 @@ List any software, libraries, or dependencies that need to be installed before s
 
 ## Contact
 
-twitter - https://twitter.com/hi_chirag_. 
+twitter - `https://twitter.com/hi_chirag_`
 email - senchirag80@gmail.com 
 
 ---
