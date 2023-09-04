@@ -70,7 +70,7 @@ List any software, libraries, or dependencies that need to be installed before s
 
 ## Contact
 
-Provide your contact information or a way for others to reach out to you regarding the project.
+twitter - https://twitter.com/hi_chirag_
 email - senchirag80@gmail.com 
 
 ---
