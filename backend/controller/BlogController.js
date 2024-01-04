@@ -12,6 +12,19 @@ export const getAllBlogs = async(req, res) => {
   }
 }
 
+export const getBlogById = async(req, res) => {
+  const { id } = req.params;
+  console.log(id.split(':')[1].toString());
+  try {
+    let blog = await Blog.findById(id.split(':')[1].toString());
+    if(blog){
+      res.status(201).json({blog})
+    }
+  }catch(err){
+    res.status(401).json({Error : err, message : 'Error in fetching all blogs' })
+  }
+}
+
 export const getCurrentUserBlogs = async(req, res) => {
   try {
     let blog = await Blog.find({author : req.user._id});
@@ -64,12 +77,12 @@ export const addBlog = async (req, res) => {
   }
 };
 
-export const upDateTitle = async (req, res) => {
-  const {title} = req.body;
+export const upDateBlog = async (req, res) => {
+  const {title, pic, content} = req.body;
   try {
     let blog = await Blog.findOneAndUpdate({author : req.user._id}, {
-      title
-    });
+      title, pic, content
+    }, {new : true});
 
     blog = await Blog.findById(blog._id).populate('author', '-password');
 

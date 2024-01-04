@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import '../../../index.css'
 
 const DiplayBlog = () => {
-  const { currOpenBlog } = UserState();
+  const { currOpenBlog, userDetails } = UserState();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,6 +27,11 @@ const DiplayBlog = () => {
       <div className='mainContainer navContainer'>
         <p className='site-title' onClick={() => navigate('/blog_page')}>Bloom.io</p>
         <div className="btn-container">
+          {
+            userDetails._id === currOpenBlog.author._id
+              ? <button className="btn btn-nav hover:text-white" onClick={() => navigate(`/edit/:${currOpenBlog._id}`)}>Edit Blog</button>
+              : <></>
+          }
           <button className='btn btn-nav' onClick={() => navigate('/blog_page')}>Go Back</button>
         </div>
       </div>
@@ -45,7 +50,6 @@ const DiplayBlog = () => {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         )}
