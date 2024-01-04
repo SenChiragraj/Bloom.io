@@ -92,7 +92,10 @@ const AddNewBlog = () => {
               }
               placeholder="Image URL"
             />
-            <button className="primary">Add New</button>
+            <div className="flex flex-col gap-10">
+              <button className="primary">Add New</button>
+            <button className="primary" onClick={() => navigate('/blog_page')}>Go Back</button>
+            </div>
           </form>
         </div>
       </div>

@@ -29,8 +29,6 @@ function BlogPage() {
     'Content-Type': 'application/json', // You can include other headers if needed
   };
 
-
-
   useEffect(() => {
     // Your fetch logic here
     async function fetchBlog() {
@@ -79,27 +77,29 @@ function BlogPage() {
       <Navbar />
       {/* Rest of your component's JSX */}
       {loggedUser && (
-        <div className="mainContainer">
-          <div className="container_A">
+        <div className="flex flex-col justify-center w-screen items-center  bg-slate-200">
+          <div className="flex flex-col ">
             <h3 className="greeting">Welcome..</h3>
             <h1 className="greet-name">{loggedUser.name}</h1>
             <div className="btn-container">
               <button className="btn btn-a" onClick={() => navigate('/add_new_blog')}>Add new Blog</button>
             </div>
           </div>
-          <div className=""></div>
 
-          <div className="container_B">
-            <div className="container">
-              <div className="container container-b-1">
+          <div className="">
+            <div className="flex flex-col justify-center w-screen items-center">
+              <div className="">
                 <button className="btn btn-b" onClick={() => { setFetchAgain('getblog') }}>Your Blogs</button>
                 <button className="btn btn-b" onClick={() => { setFetchAgain('all') }}>Global Blogs</button>
               </div>
-              <div className="container container-b-2">
-                <div className="blog-display">
+              <div className="">
+                <div className="grid grid-cols-4 gap-10 mx-20">
                   {fetchBlogs.map((blog) => {
                     return (
-                      <span onClick={() => { handleOpenBlog(blog.title) }} key={blog._id} className="span-blog"><p className="blog-title-text">{blog.title}</p> <br /></span>
+                      <div className="flex flex-col justify-center gap-2 items-center " onClick={() => { handleOpenBlog(blog.title) }} >
+                        <img src={blog.pic} alt="" srcset="" className="h-64 object-cover" />
+                        <p className="text-xl">{blog.title}</p>
+                      </div>
                     )
                   })}
                 </div>

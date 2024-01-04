@@ -15,7 +15,7 @@ function Navbar() {
   };
 
   return (
-    <div className="mainContainer navContainer">
+    <div className="mainContainer navContainer sticky top-0">
       <p className="site-title">Bloom.io</p>
       <div className="profile-container">
         <div className="profile-photo">
