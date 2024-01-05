@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { UserState } from '../../Context/UserContext'
 import { useNavigate } from 'react-router';
 import '../../../index.css'
+import CommentSection from './CommentSection';
 
 const DiplayBlog = () => {
   const { currOpenBlog, userDetails } = UserState();
@@ -9,12 +10,11 @@ const DiplayBlog = () => {
 
   useEffect(() => {
     function fetch() {
-      if (currOpenBlog == null)
+      if (currOpenBlog === undefined || currOpenBlog.author == undefined)
         navigate('/blog_page');
     }
-
     fetch();
-  }, []);
+  }, [navigate, userDetails]);
 
   const dateString = new Date(currOpenBlog.createdAt);
   const monthNames = [
@@ -35,24 +35,26 @@ const DiplayBlog = () => {
           <button className='btn btn-nav' onClick={() => navigate('/blog_page')}>Go Back</button>
         </div>
       </div>
-      {
-        (
-          <div className="blog-container">
-            <div className="hiddenContainer">
-              <h1 className="blog-title">{currOpenBlog.title}</h1>
-              <div className="blog-content-container">
-                <img src={currOpenBlog.pic} alt="" />
-                <div className="">
-                  <p className='content'>{currOpenBlog.content}</p>
-                  <div className="blog-author-container">
-                    <p className='authorName'>Author: {currOpenBlog.author.name}</p>
-                    <p className='authorname'>{dateString.getDate()} {monthNames[dateString.getMonth()]} {dateString.getFullYear()}</p>
-                  </div>
-                </div>
+      <div className="blog-container">
+        <div className="hiddenContainer">
+          <h1 className="blog-title">{currOpenBlog.title}</h1>
+          <div className="blog-content-container">
+            <img src={currOpenBlog.pic} alt="" className=' h-80 object-cover  ' />
+            <div className="">
+              <p className='content'>{currOpenBlog.content}</p>
+              <div className="blog-author-container">
+                <p className='authorName'>Author: {currOpenBlog.author.name}</p>
+                <p className='authorname'>{dateString.getDate()} {monthNames[dateString.getMonth()]} {dateString.getFullYear()}</p>
               </div>
             </div>
           </div>
-        )}
+        </div>
+      </div>
+      {
+        console.log(currOpenBlog._id, 51)
+      }
+      <CommentSection blogID={currOpenBlog._id} />
+
     </>
   )
 }

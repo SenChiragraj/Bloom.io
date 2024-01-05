@@ -16,13 +16,12 @@ const UserProvider = ({ children }) => {
       setUserDetails(userInfo);
     }else {
       // If user info is not available, navigate to the login page
-      navigate("/login");
+       navigate('/auth/');
     }
 
     if(currOpenBlog == null){
       navigate('/blog_page');
     }
-
 
   }, [navigate]);
 

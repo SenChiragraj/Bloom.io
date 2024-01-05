@@ -14,7 +14,6 @@ export const getAllBlogs = async(req, res) => {
 
 export const getBlogById = async(req, res) => {
   const { id } = req.params;
-  console.log(id.split(':')[1].toString());
   try {
     let blog = await Blog.findById(id.split(':')[1].toString());
     if(blog){

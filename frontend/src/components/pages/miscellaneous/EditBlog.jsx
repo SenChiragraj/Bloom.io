@@ -10,10 +10,6 @@ const EditBlog = () => {
   const [blogDetails, setBlogDetails] = useState({})
 
   useEffect(() => {
-    // Redirect to login if userDetails is null
-    if (userDetails === null) {
-      navigate('/login');
-    }
     fetchBlog();
   }, [userDetails, navigate]);
 
