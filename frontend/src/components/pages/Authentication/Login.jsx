@@ -1,43 +1,42 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import { UserState } from '../../Context/UserContext';
 
-
 const Login = () => {
-
-  const navigate  =useNavigate('');
   const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
-  const {userDetails} = UserState();
+  const { userDetails } = UserState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
 
   const checkLogin = async (e) => {
     e.preventDefault();
     const { email, password } = credentials;
-    let user;
 
     try {
-      user = await fetch("http://localhost:5000/api/user/login",{
-        method: "POST",
-        body: JSON.stringify({email, password}),
+      const response = await fetch('http://localhost:5000/api/user/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          'Content-type': 'application/json; charset=UTF-8',
         },
       });
 
-      let response = await user.json();
-      console.log(response);
-      let finalres = JSON.stringify(response);
-      console.log(finalres);
-      // setUserDetails(user);
-      // user =  await user.json();
-      // console.log(user);
-      localStorage.setItem('userInfo', finalres);
-      navigate('/blog_page');
-    }catch (e) {
-      console.log(e);
+      if (response.ok) {
+        const userData = await response.json();
+        localStorage.setItem('userInfo', JSON.stringify(userData));
+        setIsLoggedIn(true); // Update login status
+      } else {
+        // Handle unsuccessful login
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
+  };
+
+  if (isLoggedIn) {
+    return <Navigate to="/" />; // Redirect to home page if logged in
   }
 
   return (
@@ -71,16 +70,16 @@ const Login = () => {
             <button className="primary">Login</button>
             <div className="text-center py-2 text-gray-500">
               Don't have an account yet?
-              <Link className="underline text-black" to={"/auth/register"}>
-                {" "}
-                Register now{" "}
+              <Link className="underline text-black" to={'/register'}>
+                {' '}
+                Register now{' '}
               </Link>
             </div>
           </form>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

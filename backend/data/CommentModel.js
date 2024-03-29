@@ -9,3 +9,5 @@ const blogSchema = new mongoose.Schema({
 
 const Comment = mongoose.model('comment', blogSchema);
 export default Comment;
+
+

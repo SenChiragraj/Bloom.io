@@ -11,7 +11,7 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("userInfo");
-    navigate("/auth/");
+    navigate("/login");
   };
 
   return (

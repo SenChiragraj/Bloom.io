@@ -9,10 +9,12 @@ export const loginUser = async (req, res) => {
   if(user){
     const isValidPassword = bcrypt.compareSync(password, user.password);
     res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      pic: user.pic,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        pic: user.pic,
+      },
       token: generateToken(user._id),
     });
   }else {
@@ -41,10 +43,12 @@ export const registerUser = async (req, res) => {
     if (newUser) {
       const token = generateToken(newUser._id);
       return res.status(201).json({
-        _id: newUser._id,
-        name: newUser.name,
-        email: newUser.email,
-        pic: newUser.pic,
+        user: {
+          _id: newUser._id,
+          name: newUser.name,
+          email: newUser.email,
+          pic: newUser.pic,
+        },
         token,
       });
     } else {

@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom'
 
 const DefaultAuth = () => {
   return (
-    <div>
-      <Outlet/>
+    <div className=''>
+      <Outlet />
     </div>
   )
 }

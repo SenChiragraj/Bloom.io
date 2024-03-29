@@ -1,5 +1,5 @@
 import React , {useState} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { UserState } from '../../Context/UserContext';
 
 function RegisterPage() {
@@ -30,7 +30,7 @@ function RegisterPage() {
       // console.log(user);
       setUserDetails(user);
       localStorage.setItem('userInfo', JSON.stringify(user));
-      navigate('/blog_page');
+      return Navigate({ to:'/'})
     }catch (e) {
       console.log(e);
     }
@@ -47,7 +47,7 @@ function RegisterPage() {
             <button className="primary">Register</button>
             <div className="text-center py-2 text-gray-500">
               Already have an account?
-              <Link className="underline text-black" to={'/auth'}> Login now </Link></div>
+              <Link className="underline text-black" to={'/login'}> Login now </Link></div>
           </form>
         </div>
       </div>

@@ -41,7 +41,6 @@ const AddNewBlog = () => {
     } catch (error) {
       console.error("Error:", error);
     }
-
   };
 
 

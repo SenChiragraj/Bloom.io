@@ -14,8 +14,9 @@ export const getAllBlogs = async(req, res) => {
 
 export const getBlogById = async(req, res) => {
   const { id } = req.params;
+  console.log(id);
   try {
-    let blog = await Blog.findById(id.split(':')[1].toString());
+    let blog = await Blog.findById(id).populate('author', '-password');;
     if(blog){
       res.status(201).json({blog})
     }
@@ -24,16 +25,23 @@ export const getBlogById = async(req, res) => {
   }
 }
 
-export const getCurrentUserBlogs = async(req, res) => {
+export const getCurrentUserBlogs = async (req, res) => {
+  console.log
   try {
-    let blog = await Blog.find({author : req.user._id});
-    if(blog){
-      res.status(201).json({blog})
+    const blog = await Blog.find({ author: req.user._id.toString()});
+    if (blog.length > 0) {
+      res.status(200).json({ blog });
+    } else {
+      // Return a 404 status code if no blogs are found
+      res.status(404).json({ message: 'No blogs found for the current user' });
     }
-  }catch(err){
-    res.status(401).json({Error : err, message : 'Error in fetching all blogs' })
+  } catch (err) {
+    // Properly handle errors and return appropriate status codes
+    console.error('Error in fetching user blogs:', err);
+    res.status(500).json({ error: err, message: 'Error in fetching user blogs' });
   }
-}
+};
+
 
 export const getCurrentBlog = async(req, res) => {
   const {title} = req.body;

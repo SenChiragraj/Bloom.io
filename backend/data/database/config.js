@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export const connect = () => {
-  mongoose.connect('mongodb://127.0.0.1:27017/blogger').then(
+  mongoose.connect(process.env.DB_URL+'/blogger').then(
     console.log('Connected😊')
   )
     .catch((error) => {

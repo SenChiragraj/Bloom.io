@@ -56,6 +56,7 @@ const CommentSection = ({blogID}) => {
       }).then((res) => res.json())
       console.log(res);
       setPastComment(res.comments);
+      setComment('');
     } catch (error) {
       console.error("Error:", error);
     }
